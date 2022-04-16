@@ -1,0 +1,97 @@
+{
+    "end_users": [
+        {
+            "id": 2,
+            "url": "https://company.zendesk.com/api/v2/end_users/2.json",
+            "name": "Felicite Moorman",
+            "created_at": "2009-07-20T22:55:29Z",
+            "updated_at": "2011-05-05T10:38:52Z",
+            "time_zone": "Eastern Time",
+            "email": "felicite@boss.tech",
+            "phone": "+15551234567",
+            "locale": "en-US",
+            "locale_id": 1,
+            "organization_id": 1,
+            "role": "end-user",
+            "verified": true,
+            "photo": {
+                "id": 1,
+                "name": "my_funny_profile_pic.png",
+                "content_url": "https://ca.slack-edge.com/TTMGU2J6L-U016XTB5HAM-946af5584b5e-512",
+                "content_type": "image/png",
+                "size": 166144,
+                "thumbnails": [
+                    {
+                        "id": 2,
+                        "name": "my_funny_profile_pic_thumb.png",
+                        "content_url": "https://ca.slack-edge.com/TTMGU2J6L-U016XTB5HAM-946af5584b5e-512",
+                        "content_type": "image/png",
+                        "size": 58298
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "url": "https://company.zendesk.com/api/v2/end_users/3.json",
+            "name": "Ryan Buchert",
+            "created_at": "2009-07-20T22:55:29Z",
+            "updated_at": "2011-05-05T10:38:52Z",
+            "time_zone": "Eastern Time",
+            "email": "ryan@boss.tech",
+            "phone": "+15551234567",
+            "locale": "en-US",
+            "locale_id": 1,
+            "organization_id": 1,
+            "role": "end-user",
+            "verified": true,
+            "photo": {
+                "id": 3,
+                "name": "my_funny_profile_pic.png",
+                "content_url": "https://ca.slack-edge.com/TTMGU2J6L-UTMHELW3F-9b022b9a966c-512",
+                "content_type": "image/png",
+                "size": 166144,
+                "thumbnails": [
+                    {
+                        "id": 4,
+                        "name": "my_funny_profile_pic_thumb.png",
+                        "content_url": "https://ca.slack-edge.com/TTMGU2J6L-UTMHELW3F-9b022b9a966c-512",
+                        "content_type": "image/png",
+                        "size": 58298
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "url": "https://company.zendesk.com/api/v2/end_users/3.json",
+            "name": "Andres Garcia",
+            "created_at": "2009-07-20T22:55:29Z",
+            "updated_at": "2011-05-05T10:38:52Z",
+            "time_zone": "Eastern Time",
+            "email": "andres@boss.tech",
+            "phone": "+17033891081",
+            "locale": "en-US",
+            "locale_id": 1,
+            "organization_id": 1,
+            "role": "end-user",
+            "verified": true,
+            "photo": {
+                "id": 5,
+                "name": "my_funny_profile_pic.png",
+                "content_url": "https://ca.slack-edge.com/TTMGU2J6L-U0367AW2C1X-48b46ed5b028-192",
+                "content_type": "image/png",
+                "size": 166144,
+                "thumbnails": [
+                    {
+                        "id": 6,
+                        "name": "my_funny_profile_pic_thumb.png",
+                        "content_url": "https://ca.slack-edge.com/TTMGU2J6L-U0367AW2C1X-48b46ed5b028-192",
+                        "content_type": "image/png",
+                        "size": 58298
+                    }
+                ]
+            }
+        }
+    ]
+}

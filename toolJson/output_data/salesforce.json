@@ -1,0 +1,49 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "ref1"
+            },
+            "name": "BOSS.tech",
+            "phone": "5551234567",
+            "website": "www.boss.tech",
+            "numberOfEmployees": "18",
+            "industry": "Software",
+            "Contacts": {
+                "records": [
+                    {
+                        "attributes": {
+                            "type": "Contact",
+                            "referenceId": "ref2"
+                        },
+                        "firstname": "Felicite",
+                        "lastname": "Moorman",
+                        "Title": "Co-Founder",
+                        "email": "felicite@boss.tech"
+                    },
+                    {
+                        "attributes": {
+                            "type": "Contact",
+                            "referenceId": "ref3"
+                        },
+                        "firstname": "Ryan",
+                        "lastname": "Buchert",
+                        "title": "Co-Founder",
+                        "email": "ryan@boss.tech"
+                    },
+                    {
+                        "attributes": {
+                            "type": "Contact",
+                            "referenceId": "ref4"
+                        },
+                        "firstname": "Gabriel",
+                        "lastname": "Quevedo",
+                        "title": "Country Manager",
+                        "email": "gabriel@boss.tech"
+                    }
+                ]
+            }
+        }
+    ]
+}
