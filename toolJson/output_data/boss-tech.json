@@ -1,4 +1,56 @@
 {
-    "customers": [],
-    "companies": []
+  "customers": [
+    {
+      "FullyQualifiedName": "Felicite Moorman",
+      "PrimaryEmailAddr": { "Address": "felicite@boss.tech" },
+      "DisplayName": "Felicite Moorman",
+      "Notes": "Here are other details.",
+      "GivenName": "Felicite",
+      "FamilyName": "Moorman",
+      "PrimaryPhone": { "FreeFormNumber": "(555) 123-4567" },
+      "CompanyName": "BOSS.tech",
+      "BillAddr": {
+        "CountrySubDivisionCode": "PA",
+        "City": "Philadelphia",
+        "PostalCode": "19129",
+        "Line1": "3721 Midvale Ave",
+        "Country": "USA"
+      }
+    },
+    {
+      "FullyQualifiedName": "Ryan Buchert",
+      "PrimaryEmailAddr": { "Address": "ryan@boss.tech" },
+      "DisplayName": "Ryan Buchert",
+      "Notes": "Here are other details.",
+      "GivenName": "Ryan",
+      "FamilyName": "Buchert",
+      "PrimaryPhone": { "FreeFormNumber": "(555) 123-4567" },
+      "CompanyName": "BOSS.tech",
+      "BillAddr": {
+        "CountrySubDivisionCode": "PA",
+        "City": "Philadelphia",
+        "PostalCode": "19129",
+        "Line1": "3721 Midvale Ave",
+        "Country": "USA"
+      }
+    },
+    {
+      "FullyQualifiedName": "Andres Garcia",
+      "PrimaryEmailAddr": { "Address": "afgarcia86@gmail.com" },
+      "DisplayName": "Andres Garcia",
+      "Notes": "Here are other details.",
+      "GivenName": "Andres",
+      "FamilyName": "Garcia",
+      "PrimaryPhone": { "FreeFormNumber": "(703) 389-1081" },
+      "CompanyName": "BOSS.tech",
+      "BillAddr": {
+        "CountrySubDivisionCode": "PA",
+        "City": "Philadelphia",
+        "PostalCode": "19144",
+        "Line1": "61 W Johnson St",
+        "Country": "USA"
+      }
+    }
+  ],
+  "companies": []
 }

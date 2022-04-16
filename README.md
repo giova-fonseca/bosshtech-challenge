@@ -13,3 +13,11 @@ Your tool should do the following:
 - Create an `update` method that will allow a user to update a customer's name which has been synced to the `boss-tech.json`, this update should propagate to all "customer integrations" that have been "synced".
 
 Have Fun!
+
+# Helper Methods
+
+python -m toolJson --help
+
+1. python -m toolJson setup
+2. python -m toolJson sync
+3. python -m toolJson reset

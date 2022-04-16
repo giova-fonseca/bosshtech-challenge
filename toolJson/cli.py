@@ -51,10 +51,13 @@ def reset():
     Return: nothing
     """
 
-    shutil.rmtree(DST)
+    try:
+        shutil.rmtree(DST)
 
-    if not os.path.exists(DST):
-        os.mkdir(DST)
+        if not os.path.exists(DST):
+            os.mkdir(DST)
+    except Exception as e:
+        print(e)
 
 
 @app.command()
@@ -66,16 +69,22 @@ def sync():
     argument -- description
     Return: nothing
     """
-
+    list_customers = []
     DST = os.getcwd() + "\\toolJson\\output_data"
 
     if os.path.exists(DST):
         if os.path.exists(BOSSTECH):
-            with open(BOSSTECH, 'w') as file_dest:
+            with open(BOSSTECH, 'r+') as file_dest:
+                jsonDest = json.load(file_dest)
                 with open(QUICKBOOKS, 'r') as file_source:
                     jsonObject = json.load(file_source)
                     file_source.close()
-                    json.dump(file_dest, jsonObject)
+                    for key, value in jsonObject.items():
+                        if type(value) == list:
+                            for item in value:
+                                list_customers = jsonDest.get("customers")
+                                list_customers.append(item)
+                    json.dump(jsonDest, file_dest)
                     file_dest.close()
         else:
             print(f"Error the directory {DST} not exists")
