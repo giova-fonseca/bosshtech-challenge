@@ -19,5 +19,6 @@ Have Fun!
 python -m toolJson --help
 
 1. python -m toolJson setup
-2. python -m toolJson sync
-3. python -m toolJson reset
+2. python -m toolJson reset
+3. python -m toolJson sync
+4. python -m toolJson updated

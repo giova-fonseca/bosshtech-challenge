@@ -26,7 +26,7 @@ def _version_callback(value: bool) -> None:
         raise typer.Exit()
 
 
-@app.command()
+@app.command(name="setup")
 def setup():
     """
         copy the `sample_data` into the `output_data` folder.
@@ -42,7 +42,7 @@ def setup():
         print(e)
 
 
-@app.command()
+@app.command(name="reset")
 def reset():
     """
         reset the state of the `output_data` folder.
@@ -61,7 +61,7 @@ def reset():
         print(e)
 
 
-@app.command()
+@app.command(name="sync")
 def sync():
     """
         normalized data model for BOSS.tech customers & companies.
@@ -88,6 +88,7 @@ def sync():
                             if type(value) == list:
                                 for item in value:
                                     list_customers.append(item)
+
                                     if item.get("CompanyName") not in list_companies:
 
                                         if os.path.exists(SALESFORCE):
@@ -98,17 +99,14 @@ def sync():
                                                 list_temp = jsonSalesforce.get(
                                                     "records")
 
-                                                for element in list_temp:
-
-                                                    if item.get("CompanyName") == element.get("name"):
-                                                        list_companies.append({
-                                                            # "CompanyName": element.get("CompanyName"),
-                                                            "name": element.get("name"),
-                                                            "phone": element.get("phone"),
-                                                            "website": element.get("website"),
-                                                            "numberOfEmployees": element.get(
-                                                                "numberOfEmployees"),
-                                                            "industry": element.get("industry")})
+                                                if item.get("CompanyName") == list_temp[0].get("name"):
+                                                    list_companies.append({
+                                                        "name": list_temp[0].get("name"),
+                                                        "phone": list_temp[0].get("phone"),
+                                                        "website": list_temp[0].get("website"),
+                                                        "numberOfEmployees": list_temp[0].get(
+                                                            "numberOfEmployees"),
+                                                        "industry": list_temp[0].get("industry")})
 
                 with open(BOSSTECH, 'r+') as file_dest:
                     json.dump(jsonDest, file_dest)
@@ -119,6 +117,30 @@ def sync():
             print(f"Error the directory {DST} not exists")
     except Exception as e:
         print(e)
+
+
+@app.command(name="update")
+def update(current_name: str = typer.Argument(...), new_name: str = typer.Argument(...)):
+    """
+        allow a user to update a customer's name which has been synced to the `boss-tech.json`, 
+        this update should propagate to all "customer integrations" that have been "synced".
+
+    Keyword arguments:
+    argument -- description
+    Return: nothing
+    """
+
+    if os.path.exists(BOSSTECH):
+        with open(BOSSTECH, 'r') as file_dest:
+            jsonDest = json.load(file_dest)
+            list_customers = jsonDest.get("customers")
+            for item in list_customers:
+                if item.get("FullyQualifiedName") == current_name:
+                    item["FullyQualifiedName"] = new_name
+                    item["DisplayName"] = new_name
+
+        with open(BOSSTECH, 'w') as file_dest:
+            json.dump(jsonDest, file_dest)
 
 
 @app.callback()
