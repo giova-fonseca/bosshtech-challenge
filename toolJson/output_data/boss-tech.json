@@ -52,5 +52,27 @@
       }
     }
   ],
-  "companies": ["BOSS.tech"]
+  "companies": [
+    {
+      "name": "BOSS.tech",
+      "phone": "5551234567",
+      "website": "www.boss.tech",
+      "numberOfEmployees": "18",
+      "industry": "Software"
+    },
+    {
+      "name": "BOSS.tech",
+      "phone": "5551234567",
+      "website": "www.boss.tech",
+      "numberOfEmployees": "18",
+      "industry": "Software"
+    },
+    {
+      "name": "BOSS.tech",
+      "phone": "5551234567",
+      "website": "www.boss.tech",
+      "numberOfEmployees": "18",
+      "industry": "Software"
+    }
+  ]
 }

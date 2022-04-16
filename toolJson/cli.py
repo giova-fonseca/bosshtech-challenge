@@ -16,6 +16,7 @@ app = typer.Typer()
 SRC = os.getcwd() + "\\toolJson\\sample_data"
 DST = os.getcwd() + "\\toolJson\\output_data"
 BOSSTECH = DST + "\\boss-tech.json"
+SALESFORCE = DST + "\\salesforce.json"
 QUICKBOOKS = DST + "\\quickbooks.json"
 
 
@@ -71,36 +72,53 @@ def sync():
     """
     list_customers = []
     list_companies = []
-    DST = os.getcwd() + "\\toolJson\\output_data"
 
-    if os.path.exists(DST):
-        if os.path.exists(BOSSTECH):
-            with open(BOSSTECH, 'r+') as file_dest:
-                jsonDest = json.load(file_dest)
-                list_customers = jsonDest.get("customers")
-                list_companies = jsonDest.get("companies")
+    try:
+        if os.path.exists(DST):
+            if os.path.exists(BOSSTECH):
+                with open(BOSSTECH, 'r') as file_dest:
+                    jsonDest = json.load(file_dest)
+                    list_customers = jsonDest.get("customers")
+                    list_companies = jsonDest.get("companies")
 
-                with open(QUICKBOOKS, 'r') as file_source:
-                    jsonObject = json.load(file_source)
-                    file_source.close()
-                    for key, value in jsonObject.items():
-                        if type(value) == list:
-                            for item in value:
-                                list_customers.append(item)
+                    with open(QUICKBOOKS, 'r') as quickbook_source:
+                        jsonObject = json.load(quickbook_source)
 
-                                if item.get("CompanyName") not in list_companies:
-                                    list_companies.append(
-                                        item.get("CompanyName"))
-                                    # json.dump(item, file_dest)
-                    file_dest.truncate(0)
-                    file_dest.seek(0)
+                        for key, value in jsonObject.items():
+                            if type(value) == list:
+                                for item in value:
+                                    list_customers.append(item)
+                                    if item.get("CompanyName") not in list_companies:
+
+                                        if os.path.exists(SALESFORCE):
+                                            with open(SALESFORCE, 'r') as salesforce_source:
+                                                jsonSalesforce = json.load(
+                                                    salesforce_source)
+
+                                                list_temp = jsonSalesforce.get(
+                                                    "records")
+
+                                                for element in list_temp:
+
+                                                    if item.get("CompanyName") == element.get("name"):
+                                                        list_companies.append({
+                                                            # "CompanyName": element.get("CompanyName"),
+                                                            "name": element.get("name"),
+                                                            "phone": element.get("phone"),
+                                                            "website": element.get("website"),
+                                                            "numberOfEmployees": element.get(
+                                                                "numberOfEmployees"),
+                                                            "industry": element.get("industry")})
+
+                with open(BOSSTECH, 'r+') as file_dest:
                     json.dump(jsonDest, file_dest)
 
-                    file_dest.close()
+            else:
+                print(f"Error the directory {DST} not exists")
         else:
             print(f"Error the directory {DST} not exists")
-    else:
-        print(f"Error the directory {DST} not exists")
+    except Exception as e:
+        print(e)
 
 
 @app.callback()
