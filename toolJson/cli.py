@@ -18,7 +18,7 @@ DST = os.getcwd() + "\\toolJson\\output_data"
 BOSSTECH = DST + "\\boss-tech.json"
 SALESFORCE = DST + "\\salesforce.json"
 QUICKBOOKS = DST + "\\quickbooks.json"
-
+ZENDESK = DST + "\zendesk.json"
 
 def _version_callback(value: bool) -> None:
     if value:
@@ -83,7 +83,6 @@ def sync():
                 with open(BOSSTECH, 'r') as file_dest:
                     jsonDest = json.load(file_dest)
                     list_customers = jsonDest.get("customers")
-                    # list_companies = jsonDest.get("companies")
                     list_companies = jsonDest.get("companies")
 
                     with open(QUICKBOOKS, 'r') as quickbook_source:
@@ -105,7 +104,6 @@ def sync():
                                                     "records")
 
                                                 for element in list_temp:
-                                                    # if item.get("CompanyName") not in list_companies:
                                                     if len(list_companies) == 0:
                                                         list_companies.append({
                                                             "name": element.get("name"),
@@ -115,10 +113,6 @@ def sync():
                                                                 "numberOfEmployees"),
                                                             "industry": element.get("industry")})
                                                     else:
-                                                        # import pdb
-
-                                                        # pdb.set_trace()
-
                                                         if element.get("name") != list_companies[0].get('name'):
                                                             list_companies.append({
                                                                 "name": element.get("name"),
