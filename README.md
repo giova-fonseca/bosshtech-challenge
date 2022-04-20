@@ -16,9 +16,22 @@ Have Fun!
 
 # Helper Methods
 
-python -m toolJson --help
+**Steps to run the project**
 
-1. python -m toolJson setup
-2. python -m toolJson reset
-3. python -m toolJson sync
-4. python -m toolJson updated
+1. Create virtualenv
+   python -m virtualenv venv
+
+2. Activate virtualenv with
+   venv\scripts\activate (Windows)
+   source venv\bin\activate (Linux - MAC)
+
+3. Install requirements
+   pip install -r requirements.txt
+
+4. Execute this commands
+   python -m toolJson --help
+
+   1. python -m toolJson setup # copy all json files to output_data directory
+   2. python -m toolJson reset # delete all json files in the output_data directory
+   3. python -m toolJson sync # add information to the boss-tech.json file
+   4. python -m toolJson updated #allow a user to update a customer's name which has been synced to the `boss-tech.json`

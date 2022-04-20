@@ -38,6 +38,8 @@ def setup():
 
     try:
         destination = shutil.copytree(SRC, DST, dirs_exist_ok=True)
+        print("Setup completed successfully !")
+
     except Exception as e:
         print(e)
 
@@ -57,6 +59,8 @@ def reset():
 
         if not os.path.exists(DST):
             os.mkdir(DST)
+
+        print("Reset completed successfully !")
     except Exception as e:
         print(e)
 
@@ -79,6 +83,7 @@ def sync():
                 with open(BOSSTECH, 'r') as file_dest:
                     jsonDest = json.load(file_dest)
                     list_customers = jsonDest.get("customers")
+                    # list_companies = jsonDest.get("companies")
                     list_companies = jsonDest.get("companies")
 
                     with open(QUICKBOOKS, 'r') as quickbook_source:
@@ -99,18 +104,33 @@ def sync():
                                                 list_temp = jsonSalesforce.get(
                                                     "records")
 
-                                                if item.get("CompanyName") == list_temp[0].get("name"):
-                                                    list_companies.append({
-                                                        "name": list_temp[0].get("name"),
-                                                        "phone": list_temp[0].get("phone"),
-                                                        "website": list_temp[0].get("website"),
-                                                        "numberOfEmployees": list_temp[0].get(
-                                                            "numberOfEmployees"),
-                                                        "industry": list_temp[0].get("industry")})
+                                                for element in list_temp:
+                                                    # if item.get("CompanyName") not in list_companies:
+                                                    if len(list_companies) == 0:
+                                                        list_companies.append({
+                                                            "name": element.get("name"),
+                                                            "phone": element.get("phone"),
+                                                            "website": element.get("website"),
+                                                            "numberOfEmployees": element.get(
+                                                                "numberOfEmployees"),
+                                                            "industry": element.get("industry")})
+                                                    else:
+                                                        # import pdb
+
+                                                        # pdb.set_trace()
+
+                                                        if element.get("name") != list_companies[0].get('name'):
+                                                            list_companies.append({
+                                                                "name": element.get("name"),
+                                                                "phone": element.get("phone"),
+                                                                "website": element.get("website"),
+                                                                "numberOfEmployees": element.get(
+                                                                    "numberOfEmployees"),
+                                                                "industry": element.get("industry")})
 
                 with open(BOSSTECH, 'r+') as file_dest:
                     json.dump(jsonDest, file_dest)
-
+                print("Sync completed successfully !")
             else:
                 print(f"Error the directory {DST} not exists")
         else:
@@ -119,10 +139,10 @@ def sync():
         print(e)
 
 
-@app.command(name="update")
+@ app.command(name="update")
 def update(current_name: str = typer.Argument(...), new_name: str = typer.Argument(...)):
     """
-        allow a user to update a customer's name which has been synced to the `boss-tech.json`, 
+        allow a user to update a customer's name which has been synced to the `boss-tech.json`,
         this update should propagate to all "customer integrations" that have been "synced".
 
     Keyword arguments:
@@ -141,9 +161,10 @@ def update(current_name: str = typer.Argument(...), new_name: str = typer.Argume
 
         with open(BOSSTECH, 'w') as file_dest:
             json.dump(jsonDest, file_dest)
+        print("Update completed successfully !")
 
 
-@app.callback()
+@ app.callback()
 def main(
     version: Optional[bool] = typer.Option(
         None,

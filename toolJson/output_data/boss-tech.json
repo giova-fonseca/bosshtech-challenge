@@ -1,9 +1,9 @@
 {
   "customers": [
     {
-      "FullyQualifiedName": "nombre2",
+      "FullyQualifiedName": "Felicite Moorman",
       "PrimaryEmailAddr": { "Address": "felicite@boss.tech" },
-      "DisplayName": "nombre2",
+      "DisplayName": "Felicite Moorman",
       "Notes": "Here are other details.",
       "GivenName": "Felicite",
       "FamilyName": "Moorman",
@@ -53,20 +53,6 @@
     }
   ],
   "companies": [
-    {
-      "name": "BOSS.tech",
-      "phone": "5551234567",
-      "website": "www.boss.tech",
-      "numberOfEmployees": "18",
-      "industry": "Software"
-    },
-    {
-      "name": "BOSS.tech",
-      "phone": "5551234567",
-      "website": "www.boss.tech",
-      "numberOfEmployees": "18",
-      "industry": "Software"
-    },
     {
       "name": "BOSS.tech",
       "phone": "5551234567",
